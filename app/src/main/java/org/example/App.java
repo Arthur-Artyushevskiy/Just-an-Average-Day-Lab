@@ -3,12 +3,85 @@
  */
 package org.example;
 
+import java.util.stream.IntStream;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+
+    public int maximumUsingForLoop(int[] nums) {
+        int max = nums[0];
+        for(int num : nums){
+            if(num > max){
+                max = num;
+            }
+        }
+        return max;
+    }
+
+    public int minimumUsingForLoop(int[] nums) {
+        int min = nums[0];
+        for(int num : nums){
+            if(num < min){
+                min = num;
+            }
+        }
+        return min;
+    }
+
+    public int sumUsingForLoop(int[] nums) {
+        int sum = 0;
+        for(int num : nums){
+            sum += num;
+        }
+        return sum;
+    }
+
+    public int averageUsingForLoop(int[] nums) {
+        int sum = sumUsingForLoop(nums);
+        return sum / nums.length;
+    }
+
+
+    public int maximumUsingStream(int[] nums) {
+        return IntStream.of(nums).max().orElse(0);
+    }
+
+
+    public int minimumUsingStream(int[] nums) {
+        return IntStream.of(nums).min().orElse(0);
+    }
+
+
+    public int sumUsingStream(int[] nums) {
+        return IntStream.of(nums).sum();
+    }
+
+
+    public int averageUsingStream(int[] nums) {
+        return (int) IntStream.of(nums).average().orElse(0.0);
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        App app = new App();
+        int[] testNumbers = {5, 12, 3, 21, 8, 15};
+
+
+
+        System.out.println("Test Array: [5, 12, 3, 21, 8, 15]");
+        System.out.println("------------------------------------");
+
+
+        System.out.println("For-Loop Results:");
+        System.out.println("Maximum: " + app.maximumUsingForLoop(testNumbers));
+        System.out.println("Minimum: " + app.minimumUsingForLoop(testNumbers));
+        System.out.println("Sum:     " + app.sumUsingForLoop(testNumbers));
+        System.out.println("Average: " + app.averageUsingForLoop(testNumbers));
+        System.out.println();
+
+
+        System.out.println("Stream API Results:");
+        System.out.println("Maximum: " + app.maximumUsingStream(testNumbers));
+        System.out.println("Minimum: " + app.minimumUsingStream(testNumbers));
+        System.out.println("Sum:     " + app.sumUsingStream(testNumbers));
+        System.out.println("Average: " + app.averageUsingStream(testNumbers));
     }
 }

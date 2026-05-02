@@ -4,11 +4,71 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+
+    private final App app = new App();
+    private final int[] numbers = {10, 20, 30, 40, 50};
+
+
+    @Test
+    void testMaximumUsingForLoop() {
+
+        assertEquals(50, app.maximumUsingForLoop(numbers));
+    }
+
+    @Test
+    void testMinimumUsingForLoop() {
+
+        assertEquals(10, app.minimumUsingForLoop(numbers));
+    }
+
+    @Test
+    void testSumUsingForLoop() {
+
+        assertEquals(150, app.sumUsingForLoop(numbers));
+    }
+
+    @Test
+    void testAverageUsingForLoop() {
+
+        assertEquals(30, app.averageUsingForLoop(numbers));
+    }
+
+
+    @Test
+    void testMaximumUsingStream() {
+
+        assertEquals(50, app.maximumUsingStream(numbers));
+    }
+
+    @Test
+    void testMinimumUsingStream() {
+
+        assertEquals(10, app.minimumUsingStream(numbers));
+    }
+
+    @Test
+    void testSumUsingStream() {
+
+        assertEquals(150, app.sumUsingStream(numbers));
+    }
+
+    @Test
+    void testAverageUsingStream() {
+
+        assertEquals(30, app.averageUsingStream(numbers));
+    }
+
+
+    @Test
+    void testEmptyArrayStreamBehavior() {
+        int[] empty = {};
+
+        assertEquals(0, app.maximumUsingStream(empty));
+        assertEquals(0, app.minimumUsingStream(empty));
+        assertEquals(0, app.sumUsingStream(empty));
+        assertEquals(0, app.averageUsingStream(empty));
     }
 }
